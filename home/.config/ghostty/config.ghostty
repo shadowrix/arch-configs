@@ -1,8 +1,18 @@
-theme = Catppuccin Mocha
+theme = TokyoNight Night
 
 cursor-style = block
-cursor-color = #50fa7b
+cursor-color = #bb9af7
 cursor-style-blink = false
 
 font-family = JetBrainsMono Nerd Font
 font-size = 14
+
+# Tokyo Glass Dev: opacity applies to the terminal, not every desktop window.
+background = #1a1b26
+foreground = #c0caf5
+background-opacity = 0.94
+window-padding-x = 14
+window-padding-y = 12
+selection-background = #414868
+selection-foreground = #c0caf5
+cursor-text = #1a1b26

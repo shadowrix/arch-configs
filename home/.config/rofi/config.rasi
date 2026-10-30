@@ -1,4 +1,5 @@
 configuration {
+    icon-theme: "Adwaita";
 /*	modes: "window,drun,run,ssh";*/
 /*	font: "mono 12";*/
 /*	location: 0;*/
@@ -167,4 +168,4 @@ configuration {
   }
 }
 
-@theme "/home/shadowrix/.local/share/rofi/themes/spotlight-dark.rasi"
+@theme "~/.local/share/rofi/themes/tokyo-glass-dev.rasi"

@@ -1,0 +1,14 @@
+# Tokyo Glass Dev — visual settings only; default actions/timeouts unchanged.
+font=JetBrainsMono Nerd Font 11
+background-color=#24283be6
+text-color=#c0caf5
+border-color=#7aa2f766
+border-size=1
+border-radius=14
+padding=14
+margin=10
+width=340
+progress-color=over #7aa2f733
+
+[urgency=critical]
+border-color=#f7768e

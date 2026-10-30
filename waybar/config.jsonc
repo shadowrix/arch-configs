@@ -1,8 +1,23 @@
 {
     "layer": "top",
+    "position": "top",
+    "height": 38,
+    "margin-top": 10,
+    "margin-left": 14,
+    "margin-right": 14,
+    "spacing": 0,
+    "fixed-center": true,
     "modules-left": ["hyprland/workspaces", "hyprland/submap"],
     "modules-center": ["clock"],
-    "modules-right": ["pulseaudio", "hyprland/language", "bluetooth", "custom/vpn", "network", "cpu", "memory", "battery"],
+    "modules-right": ["pulseaudio", "hyprland/language", "bluetooth", "custom/vpn", "network", "cpu", "memory", "battery", "tray"],
+    "tray": {
+        "icon-size": 16,
+        "spacing": 8
+    },
+    "hyprland/workspaces": {
+        "format": "{id}",
+        "all-outputs": false
+    },
     "hyprland/window": {
         "max-length": 50
     },
@@ -39,24 +54,22 @@
 	"on-click": "nm-connection-editor"
     },
     "clock": {
-        "format": "{:%A, %B %d, (%R)}  ",
-        "format-alt": "{:%A, %B %d, %Y (%R)}  ",
+        "format": "{:%H:%M}  ",
+        "format-alt": "{:%a, %d %b · %H:%M}  ",
         "tooltip-format": "<tt><small>{calendar}</small></tt>",
         "calendar": {
                     "mode"          : "month",
                     "on-scroll"     : 1,
                     "format": {
-                              "months":     "<span color='#ffead3'><b>{}</b></span>",
-                              "days":       "<span color='#ecc6d9'><b>{}</b></span>",
-                              "weeks":      "<span color='#99ffdd'><b>W{}</b></span>",
-                              "weekdays":   "<span color='#ffcc66'><b>{}</b></span>",
-                              "today":      "<span color='#ff6699'><b><u>{}</u></b></span>"
+                              "months":     "<span color='#c0caf5'><b>{}</b></span>",
+                              "days":       "<span color='#a9b1d6'><b>{}</b></span>",
+                              "weeks":      "<span color='#7dcfff'><b>W{}</b></span>",
+                              "weekdays":   "<span color='#bb9af7'><b>{}</b></span>",
+                              "today":      "<span color='#7aa2f7'><b><u>{}</u></b></span>"
                               }
                     },
         "actions":  {
                     "on-click-right": "mode",
-                    "on-scroll-up": "tz_up",
-                    "on-scroll-down": "tz_down",
                     "on-scroll-up": "shift_up",
                     "on-scroll-down": "shift_down"
                     }

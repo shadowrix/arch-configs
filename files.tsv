@@ -35,3 +35,5 @@ home/.config/Cursor/User/settings.json	.config/Cursor/User/settings.json
 home/.config/Cursor/User/keybindings.json	.config/Cursor/User/keybindings.json
 home/.config/nwg-look/config	.config/nwg-look/config
 home/.local/share/nwg-look/gsettings	.local/share/nwg-look/gsettings
+home/.local/share/rofi/themes/tokyo-glass-dev.rasi	.local/share/rofi/themes/tokyo-glass-dev.rasi
+home/.config/mako/config	.config/mako/config

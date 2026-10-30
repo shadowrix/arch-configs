@@ -1,61 +1,94 @@
-@define-color highlight rgba(117, 241, 250, 1);
-@define-color dark-9 rgba(24, 24, 27, 0.7);
-@define-color dark-8 rgba(39, 39, 42, 1);
-@define-color dark-7 rgba(63, 63, 70, 1);
-@define-color dark-6 rgba(82, 82, 91, 1);
-@define-color dark-5 rgba(113, 113, 122, 1);
-
+/* Tokyo Glass Dev — GTK CSS; blur is handled by Hyprland. */
+@define-color text #c0caf5;
+@define-color muted #a9b1d6;
+@define-color blue #7aa2f7;
+@define-color violet #bb9af7;
+@define-color cyan #7dcfff;
+@define-color pink #f7768e;
+@define-color green #9ece6a;
 
 * {
-    /* `otf-font-awesome` is required to be installed for icons */
-    font-family: "JetBrainsMono Nerd Font Propo", sans-serif;
-    font-size: 16px;
+    font-family: "JetBrainsMono Nerd Font", monospace;
+    font-size: 12px;
+    min-height: 0;
+    border: none;
+    text-shadow: none;
 }
 
 window#waybar {
-    background-color: @dark-9;
-    color: #ffffff;
-    padding: 0 10px;
+    background: transparent;
+    color: @text;
+}
+
+/* Each section has its own surface; the remaining layer stays transparent. */
+.modules-left, .modules-center, .modules-right {
+    background: rgba(36, 40, 59, 0.88);
+    border: 1px solid rgba(122, 162, 247, 0.24);
+    border-radius: 16px;
+    padding: 2px 8px;
+    box-shadow: 0 2px 4px rgba(11, 14, 24, 0.25);
 }
 
 #workspaces button {
-  padding: 1px;
-  margin: 5px 0px 5px 5px;
-  background: transparent;
-  border-radius: 3px;
-  color: white;
+    color: @muted;
+    background: transparent;
+    border-radius: 11px;
+    padding: 0 9px;
+    margin: 3px 2px;
+    min-width: 14px;
+    box-shadow: none;
+    transition: background-color 150ms ease-out, color 150ms ease-out;
 }
 
+#workspaces button:hover {
+    background: rgba(122, 162, 247, 0.12);
+    color: @text;
+}
 
 #workspaces button.active {
-  background: @highlight;
-  color: black;
-  font-weight: 700;
+    background: linear-gradient(110deg, rgba(122, 162, 247, 0.25), rgba(187, 154, 247, 0.22));
+    color: @text;
+    box-shadow: inset 0 -2px @blue;
 }
-
 
 #workspaces button.urgent {
-  background: rgba(227, 81, 73, 1);
+    color: @pink;
+    background: rgba(247, 118, 142, 0.12);
 }
 
-#battery,
-#bluetooth,
-#network,
-#cpu,
-#memory,
-#language,
-#pulseaudio,
-#custom-vpn {
-  border-radius: 8px;
-  padding: 3px 5px;
-  background: @dark-8;
-  margin: 3px 5px 3px 0px;
+#clock {
+    padding: 0 12px;
+    font-size: 13px;
+    font-weight: bold;
+    color: @text;
 }
 
-#custom-vpn.connected {
-    color: #a6e3a1;
+#submap { color: @violet; padding: 0 5px; }
+#pulseaudio, #language, #bluetooth, #custom-vpn, #network,
+#cpu, #memory, #battery, #tray {
+    padding: 0 7px;
+    margin: 2px 0;
+    color: @muted;
 }
 
-#custom-vpn.disconnected {
-    color: #f38ba8;
+#pulseaudio:hover, #bluetooth:hover, #network:hover, #custom-vpn:hover {
+    color: @blue;
 }
+#custom-vpn.connected, #battery.charging { color: @green; }
+#pulseaudio.muted, #network.disconnected, #custom-vpn.disconnected { color: @muted; }
+#battery.warning:not(.charging) { color: @violet; }
+#battery.critical:not(.charging) { color: @pink; }
+#language { color: @violet; }
+#tray { padding-right: 4px; }
+#tray > .passive { -gtk-icon-effect: dim; }
+#tray > .needs-attention { -gtk-icon-effect: highlight; }
+
+tooltip, menu {
+    background: rgba(26, 27, 38, 0.96);
+    border: 1px solid rgba(122, 162, 247, 0.35);
+    border-radius: 12px;
+    color: @text;
+}
+tooltip label { padding: 6px; color: @text; }
+menuitem { padding: 5px 10px; border-radius: 8px; }
+menuitem:hover { background: rgba(122, 162, 247, 0.18); }

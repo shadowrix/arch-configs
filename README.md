@@ -1,4 +1,6 @@
-# Arch configuration backup
+# Arch configuration — Tokyo Glass Dev
+
+Tokyo Night, frosted glass and restrained blue/violet accents for this Arch Linux / Hyprland setup. See [Tokyo Glass Dev](docs/tokyo-glass-dev.md) for the exact apply, reload, validation and rollback workflow.
 
 Reviewed configuration snapshots for this Arch Linux / Hyprland setup. Live files remain ordinary files: edit them normally, capture reviewed changes here, then use Git to version them. No symlinks or automatic apply hooks are installed.
 
@@ -17,17 +19,19 @@ arch-configs/
 └── README.md
 ```
 
-Existing `hypr/` and `waybar/` were preserved byte for byte. See [inventory](docs/inventory.md) for all files, dependencies and known issues.
+Existing desktop functionality is preserved; the visual settings now implement Tokyo Glass Dev. See [inventory](docs/inventory.md) for all files, dependencies and known issues.
 
 ## Management choice and Git prerequisite
 
-Chezmoi was not installed during inspection. More importantly, `.git/` was exposed as an empty, read-only directory and Git reported `not a git repository`. Branch, remote, tracked files, uncommitted changes and history could not be inspected. No Git initialization, branch/remote change, commit or push was attempted. **Restore access to the original Git metadata before committing. Do not run `git init` here.**
+This repository uses explicit file copies mapped by `files.tsv`, not symlinks or chezmoi. No automatic apply hook is installed. The theme helper uses that same mapping and changes only the eight themed files.
 
-This deliberately uses a simple explicit file mapping, avoiding migration of existing folders and requiring only Python 3 for capture. Chezmoi has not been configured, and this is not a chezmoi source tree; do not run `chezmoi apply` against it. Reconsider migration after the original repository and an installed chezmoi version can be inspected. No second repository is needed.
+Git metadata is now accessible: the redesign started from clean branch `main` at `61137f0` (`Init`). No remote was configured during this inspection. Existing history is preserved. Before syncing, inspect `git remote -v`; if it remains empty, connect your intended existing GitHub repository with `git remote add origin <YOUR_EXISTING_REPOSITORY_URL>`. No commit, remote change or push was made by the redesign.
+
+Chezmoi is not installed and has not been introduced. This is not a chezmoi source tree; do not run `chezmoi apply` against it. Python 3 provides the existing capture workflow and the backed-up theme apply helper.
 
 ## Dependencies and packages
 
-Runtime dependencies include Hyprland, Waybar, Ghostty, Rofi, awww, hypridle, hyprlock, hyprpolkitagent, PipeWire/WirePlumber, brightnessctl, playerctl, grim, slurp, wl-clipboard, NetworkManager, Blueman, pavucontrol and inotify-tools. The desktop launches Nemo, Chrome, Spotify, Telegram, Mattermost, AmneziaVPN and a manually supplied Hiddify AppImage. Shell dependencies: Bash, Starship and NVM. Fonts/themes: JetBrainsMono Nerd Font, Montserrat (availability needs checking), Adwaita-dark, Adwaita icons and Bibata-Modern-Ice. Python 3 runs the capture helper.
+Runtime dependencies include Hyprland, Waybar, Ghostty, Rofi, mpvpaper, hypridle, hyprlock, hyprpolkitagent, PipeWire/WirePlumber, brightnessctl, playerctl, grim, slurp, wl-clipboard, NetworkManager, Blueman, pavucontrol and inotify-tools. The desktop launches Nemo, Chrome, Spotify, Telegram, Mattermost, AmneziaVPN and a manually supplied Hiddify AppImage. Shell dependencies: Bash, Starship and NVM. Fonts/themes: JetBrainsMono Nerd Font, Montserrat (availability needs checking), Adwaita-dark, Adwaita icons and Bibata-Modern-Ice. Python 3 runs the capture helper.
 
 The package lists contain **explicit installations only**, not dependency closure. Review them on new hardware: kernel, NVIDIA, Intel microcode, bootloader, display manager and network choices are machine-specific. The lists are a snapshot, not pinned package versions or a system installer.
 
@@ -80,7 +84,7 @@ mkdir -p ~/Pictures/screenshots ~/Pictures/desctop_backgrounds
 )
 ```
 
-Supply your wallpapers privately in `~/Pictures/desctop_backgrounds` (original spelling). Review Lua/Hyprland compatibility before starting the desktop; the original installed version was `0.56.2-4`. No login-session, system-service, bootloader, driver or system-wide configuration is restored by this file backup. Enable services such as networking, Bluetooth or your display manager deliberately for the new system.
+Supply your MP4 wallpapers privately in `~/Video/Wallpapers`. Hyprland starts mpvpaper with muted, shuffled videos, looping each video and switching every five minutes (`--slideshow 300` in `hypr/hyprland.lua`). The older image-wallpaper script is retained as a manual fallback. Review Lua/Hyprland compatibility before starting the desktop; the original installed version was `0.56.2-4`. No login-session, system-service, bootloader, driver or system-wide configuration is restored by this file backup. Enable services such as networking, Bluetooth or your display manager deliberately for the new system.
 
 Optionally restore editor extensions after installing the editors:
 
@@ -104,7 +108,7 @@ Capture uses only `files.tsv`, never an entire directory. It does not modify liv
 
 ## Git workflow
 
-After original Git metadata is accessible:
+After reviewing your changes and confirming the intended GitHub remote:
 
 ```bash
 cd ~/Projects/arch-configs
@@ -129,4 +133,4 @@ Before an experiment, capture the working setup, review and commit it, then use 
 
 For a committed unwanted change, `git revert <commit>` preserves history. For one stored file, save uncommitted work first, then `git restore --source=<known-good-commit> -- <stored-path>`. Compare with the live target and copy only that file after making a backup. Example: `diff -u hypr/hyprland.lua ~/.config/hypr/hyprland.lua` (inspect locally), then restore after review. Your private `arch-configs-backup-*` directories contain the pre-restore files and can be copied back individually. Do not blindly restore shell startup files or monitor settings while diagnosing a broken login.
 
-No credentials were detected in the reviewed snapshots, but pattern checks cannot prove their absence. Original tracked-file and historical scans remain pending because Git metadata was inaccessible. If an exposed secret is later found, revoke/rotate it: deleting it from the latest tree does **not** remove it from Git history. No history rewriting or credential rotation was performed.
+No credentials were detected in the reviewed snapshots, but pattern checks cannot prove their absence. Historical secret scanning was not repeated as part of the visual redesign. If an exposed secret is later found, revoke/rotate it: deleting it from the latest tree does **not** remove it from Git history. No history rewriting or credential rotation was performed.

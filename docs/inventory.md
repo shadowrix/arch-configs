@@ -1,4 +1,6 @@
-# Inspection and backup inventory
+# Initial inspection and backup inventory
+
+This records the initial backup. For the subsequent desktop redesign, current Git accessibility, new managed files and pending live apply, see [Tokyo Glass Dev](tokyo-glass-dev.md).
 
 Inspected 2026-10-30. Home: `/home/shadowrix`; source: `~/Projects/arch-configs`.
 
@@ -39,7 +41,7 @@ Installed application evidence comes from pacman and file references. The sessio
 
 - Hyprland `0.56.2-4`, Ghostty `1.3.1-2`, Waybar `0.15.0-3` were installed. The Lua config uses the `hl` API; verify support before restoring with another version. The short `.conf` stub coexists with Lua; both are preserved and no assumption was made about which entry point a particular build loads.
 - Monitor `eDP-1`, `1920x1200@165`, scale `1.07`; keyboard layouts `us,ru`, Alt+Shift switch; touchpad factor `0.2`; example mouse rule `epic-mouse-v1`. Adjust for new hardware.
-- Wallpaper path is `~/Pictures/desctop_backgrounds`; scripts require awww. Screenshots require `~/Pictures/screenshots`. The screenshot binding invokes `date` twice, so crossing a second boundary can make its clipboard step use a different filename. Preserved as requested.
+- Video wallpaper path is `~/Video/Wallpapers`; startup requires mpvpaper and rotates every five minutes. The retained image fallback uses `~/Pictures/desctop_backgrounds` and awww. Screenshots require `~/Pictures/screenshots`. The screenshot binding invokes `date` twice, so crossing a second boundary can make its clipboard step use a different filename. Preserved as requested.
 - Both stored Waybar VPN scripts now reference connection name `VPN-W`. The live scripts and NetworkManager profile could not be updated from the restricted environment. Rename the live profile and update both live scripts together before capturing again; otherwise capture will restore the old name in the repository. Recreate the connection and its credentials privately on another machine.
 - Waybar clock actions have duplicate `on-scroll-up`/`on-scroll-down` keys; parser behavior may select the last value. Preserved unchanged.
 - Rofi theme path, GTK2 include and Hiddify/Claude desktop entries contain `/home/shadowrix`. Adjust before restoring under another username. GTK2 includes `.gtkrc-2.0.mine`, which is absent; create only if needed.

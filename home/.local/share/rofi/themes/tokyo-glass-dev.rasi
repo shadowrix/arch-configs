@@ -1,0 +1,55 @@
+/* Tokyo Glass Dev — uses the existing launcher modes and commands. */
+* {
+    font: "JetBrainsMono Nerd Font 12";
+    background-color: transparent;
+    text-color: #c0caf5;
+    border-color: #414868;
+    spacing: 0;
+    padding: 0;
+}
+window {
+    location: center;
+    anchor: center;
+    width: 36%;
+    background-color: #1a1b26ed;
+    border: 1px;
+    border-color: #7aa2f766;
+    border-radius: 16px;
+}
+mainbox { padding: 18px; spacing: 14px; }
+inputbar {
+    background-color: #24283b;
+    border-radius: 10px;
+    padding: 12px 14px;
+    spacing: 10px;
+    children: [ prompt, entry ];
+}
+prompt { text-color: #bb9af7; }
+entry { placeholder: "Search applications or commands…"; placeholder-color: #a9b1d6; }
+message { padding: 8px; }
+textbox { text-color: #a9b1d6; }
+listview {
+    lines: 8;
+    columns: 1;
+    fixed-height: false;
+    scrollbar: false;
+    spacing: 4px;
+}
+element {
+    padding: 10px 12px;
+    spacing: 12px;
+    border-radius: 10px;
+}
+element-icon { size: 22px; vertical-align: 0.5; }
+element-text { vertical-align: 0.5; text-color: inherit; }
+element normal normal, element alternate normal { background-color: transparent; }
+element selected normal {
+    background-color: #292e42;
+    text-color: #7aa2f7;
+    border: 0px 0px 0px 2px;
+    border-color: #bb9af7;
+}
+element normal active, element alternate active { text-color: #7dcfff; }
+element selected active { background-color: #292e42; text-color: #7dcfff; }
+element normal urgent, element alternate urgent { text-color: #f7768e; }
+element selected urgent { background-color: #292e42; text-color: #f7768e; }
