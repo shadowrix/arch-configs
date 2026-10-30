@@ -1,0 +1,8 @@
+theme = Catppuccin Mocha
+
+cursor-style = block
+cursor-color = #50fa7b
+cursor-style-blink = false
+
+font-family = JetBrainsMono Nerd Font
+font-size = 14

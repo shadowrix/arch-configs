@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=Hiddify
+Exec="/home/shadowrix/apps/Hiddify-Linux-x64-AppImage.AppImage"
+Icon=hiddify
+Terminal=false
+StartupWMClass=app.hiddify.com

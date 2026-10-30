@@ -1,0 +1,24 @@
+# Private files, credentials, and runtime artifacts are never backup candidates.
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+id_rsa*
+id_ed25519*
+credentials*
+secrets*
+*.sqlite*
+*.db
+*.log
+*.bak
+*.swp
+*~
+__pycache__/
+.cache/
+backups/
+.ssh/
+.gnupg/
+.aws/
+.codex/
+.agents/

@@ -1,0 +1,11 @@
+anysphere.remote-containers
+anysphere.remote-ssh
+bradlc.vscode-tailwindcss
+dbaeumer.vscode-eslint
+esbenp.prettier-vscode
+gruntfuggly.todo-tree
+pkief.material-icon-theme
+streetsidesoftware.code-spell-checker
+teabyii.ayu
+vue.volar
+wayou.vscode-todo-highlight

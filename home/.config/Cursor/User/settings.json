@@ -1,0 +1,151 @@
+{
+    "files.associations": {
+        "*.gotmpl": "html"
+    },
+    "workbench.colorTheme": "Ayu Mirage Bordered",
+    "terminal.integrated.defaultProfile.windows": "Git Bash",
+    "workbench.iconTheme": "material-icon-theme",
+    "editor.fontFamily": "'JetBrains Mono'",
+    "editor.fontSize": 16,
+    "editor.letterSpacing": 1.2,
+    "editor.formatOnSave": false,
+    "editor.fontLigatures": true,
+    "[typescriptreact]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[typescript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[html]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "terminal.integrated.localEchoExcludePrograms": [
+        "nano",
+        "tmux"
+    ],
+    "[javascript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "todo-tree.general.tagGroups": {},
+    "todo-tree.highlights.customHighlight": {
+        "TODO": {
+            "icon": "check",
+            "type": "line",
+            "foreground": "white",
+            "iconColour": "yellow"
+        },
+        "FIXME": {
+            "foreground": "white",
+            "iconColour": "pink",
+            "gutterIcon": true
+        }
+    },
+    "[scss]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "tsImportSorter.configuration.autoFormat": "off",
+    "[json]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "editor.guides.bracketPairs": true,
+    "[css]": {
+        "editor.defaultFormatter": "vscode.css-language-features"
+    },
+    "[jsonc]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "terminal.integrated.defaultProfile.osx": "bash",
+    "errorLens.excludeBySource": [
+        "ts(7006)"
+    ],
+    "[svelte]": {
+        "editor.defaultFormatter": "svelte.svelte-vscode"
+    },
+    "prettier.printWidth": 100,
+    "[javascriptreact]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "prettier.tabWidth": 2,
+    "git.confirmSync": false,
+    "editor.tabSize": 2,
+    "[dockercompose]": {
+        "editor.defaultFormatter": "ms-azuretools.vscode-docker"
+    },
+    "[astro]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "tsImportSorter.configuration.sortRules": {
+        "paths": [
+            "_",
+            "aA"
+        ],
+        "names": [
+            "_",
+            "aA"
+        ]
+    },
+    "github.copilot.enable": {
+        "*": false,
+        "plaintext": false,
+        "markdown": false,
+        "scminput": false
+    },
+    "gitlens.advanced.messages": {
+        "suppressLineUncommittedWarning": true
+    },
+    "github.copilot.chat.agent.runTasks": false,
+    "github.copilot.chat.codeGeneration.useInstructionFiles": false,
+    "github.copilot.chat.useProjectTemplates": false,
+    "github.copilot.editor.enableCodeActions": false,
+    "github.copilot.renameSuggestions.triggerAutomatically": false,
+    "github.copilot.chat.copilotDebugCommand.enabled": false,
+    "github.copilot.chat.reviewSelection.enabled": false,
+    "github.copilot.chat.startDebugging.enabled": false,
+    "github.copilot.chat.edits.newNotebook.enabled": false,
+    "github.copilot.chat.edits.suggestRelatedFilesForTests": false,
+    "github.copilot.chat.edits.suggestRelatedFilesFromGitHistory": false,
+    "github.copilot.chat.newWorkspaceCreation.enabled": false,
+    "github.copilot.chat.search.semanticTextResults": false,
+    "github.copilot.chat.setupTests.enabled": false,
+    "chat.agent.enabled": false,
+    "chat.commandCenter.enabled": false,
+    "chat.extensionTools.enabled": false,
+    "chat.focusWindowOnConfirmation": false,
+    "chat.setupFromDialog": false,
+    "telemetry.feedback.enabled": false,
+    "github.copilot.advanced": {},
+    "[vue]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "terminal.integrated.profiles.linux": {
+        "bash": {
+            "path": "/usr/bin/bash"
+        },
+        "zsh": {
+            "path": "zsh"
+        },
+        "fish": {
+            "path": "fish"
+        },
+        "tmux": {
+            "path": "tmux",
+            "icon": "terminal-tmux"
+        },
+        "pwsh": {
+            "path": "pwsh",
+            "icon": "terminal-powershell"
+        },
+        "bash (2)": {
+            "path": "/usr/bin/bash"
+        }
+    },
+    "terminal.integrated.defaultProfile.linux": "bash",
+    "terminal.integrated.initialHint": false,
+    "explorer.confirmPasteNative": false,
+    "explorer.confirmDelete": false,
+    "cursor.cpp.disabledLanguages": [
+        "plaintext",
+        "markdown",
+        "scminput"
+    ]
+}

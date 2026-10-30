@@ -1,0 +1,28 @@
+add_newline = true
+
+format = """
+$directory$fill$cmd_duration$time
+$character
+"""
+
+[directory]
+format = "📁 [$path]($style)"
+style = "bold blue"
+
+[fill]
+symbol = "."
+
+[cmd_duration]
+min_time = 1
+format = " ⏳ [$duration]($style)"
+style = "yellow"
+
+[time]
+disabled = false
+time_format = "%H:%M"
+format = " 🕒 [$time]($style)"
+style = "bold blue"
+
+[character]
+success_symbol = "[❯](bold green)"
+error_symbol = "[❯](bold red)"

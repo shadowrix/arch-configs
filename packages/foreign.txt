@@ -1,0 +1,9 @@
+amneziavpn-bin
+bibata-cursor-theme
+cursor-bin
+google-chrome
+mattermost-desktop-bin
+spotify
+visual-studio-code-bin
+yay
+zen-browser-bin
