@@ -90,5 +90,46 @@ tooltip, menu {
     color: @text;
 }
 tooltip label { padding: 6px; color: @text; }
+tooltip {
+    background: rgba(36, 40, 59, 0.98);
+    border-color: #414868;
+}
 menuitem { padding: 5px 10px; border-radius: 8px; }
 menuitem:hover { background: rgba(122, 162, 247, 0.18); }
+
+/* Independent music island; the clock and status island keep their positions. */
+.modules-left {
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    padding: 0;
+}
+#workspace-island, #spotify {
+    background: rgba(36, 40, 59, 0.88);
+    border: 1px solid rgba(122, 162, 247, 0.24);
+    border-radius: 16px;
+    padding: 2px 8px;
+    box-shadow: 0 2px 4px rgba(11, 14, 24, 0.25);
+}
+#spotify { margin-left: 10px; }
+#custom-spotify-title { color: @text; padding: 0 8px 0 3px; }
+#custom-spotify-title.paused { color: @muted; }
+#custom-spotify-previous, #custom-spotify-toggle, #custom-spotify-next {
+    color: @muted;
+    min-width: 24px;
+    padding: 0 2px;
+    margin: 3px 0;
+    border-radius: 10px;
+    transition: background-color 150ms ease-out, color 150ms ease-out;
+}
+#custom-spotify-toggle { color: @blue; background: rgba(122, 162, 247, 0.10); }
+#custom-spotify-toggle.playing { color: @violet; }
+#custom-spotify-previous:hover, #custom-spotify-toggle:hover, #custom-spotify-next:hover {
+    background: rgba(187, 154, 247, 0.18);
+    color: @text;
+}
+#custom-spotify-title.inactive, #custom-spotify-previous.inactive,
+#custom-spotify-toggle.inactive, #custom-spotify-next.inactive {
+    color: @muted;
+    opacity: 0.45;
+}

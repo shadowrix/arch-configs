@@ -15,7 +15,7 @@ A restrained Tokyo Night desktop: navy glass islands, blue/violet workspace pill
 | `home/.local/share/rofi/themes/tokyo-glass-dev.rasi` | Centered 36%-width dialog, 16px corners, dark translucent surface, inset search field, eight balanced list rows, blue text/violet selection edge. Previous spotlight themes remain available. |
 | `home/.config/mako/config` | Installed Mako receives matching rounded navy notifications, blue borders and pink critical accents. Default actions, expiration, history, sorting and daemon activation remain unchanged. Mako has no native notification-center widget, so no polling module or replacement daemon was added. |
 
-`files.tsv` includes the new Rofi theme and Mako config. `scripts/theme.py` previews/applies these eight files and restores its backups; `scripts/test_theme.py` exercises it against a temporary home. README and this guide document the workflow.
+`files.tsv` includes the new Rofi theme and Mako config. `scripts/theme.py` previews/applies these nine files (including the [Spotify helper](spotify-waybar.md)) and restores its backups; `scripts/test_theme.py` exercises it against a temporary home. README and this guide document the workflow.
 
 ## Apply from the repository
 
@@ -23,7 +23,7 @@ This implementation environment allows writes only in the repository and `/tmp`,
 
 ```bash
 cd ~/Projects/arch-configs
-python scripts/theme.py                         # preview exactly eight targets
+python scripts/theme.py                         # preview exactly nine targets
 python scripts/test_theme.py                    # temporary-home self-check
 Hyprland --verify-config --config "$PWD/hypr/hyprland.lua"
 ghostty +validate-config --config-file="$PWD/home/.config/ghostty/config.ghostty"
@@ -34,7 +34,7 @@ The helper refuses symlinked targets/parents, backs up every existing destinatio
 
 The separate `backups/tokyo-glass-before/` directory contains the repository and live theme files inspected before editing, along with original live hashes. It is a local safety copy, not a portable Git artifact. The apply helper creates its own full backup at apply time, including a record of absent files; only those `tokyo-live-*` backups are accepted by its restore workflow.
 
-Before applying, review any live edits made since inspection. Applying replaces the eight target files with repository versions; it leaves unrelated files alone. In particular, the VPN scripts are not part of this theme and their previously pending rename is unaffected.
+Before applying, review any live edits made since inspection. Applying replaces the nine target files with repository versions; it leaves unrelated files alone. In particular, the VPN scripts are not part of this theme and their previously pending rename is unaffected.
 
 ## Reload and check the running session
 
@@ -60,7 +60,7 @@ Palette: background `#1a1b26`, surfaces `#24283b`/`#292e42`, muted border `#4148
 
 Change Waybar's spacing/opacity in CSS, the terminal opacity/padding in Ghostty, and window effects in Hyprland's existing look-and-feel section. Keep background-alpha cutoffs on layer blur rules so fully transparent regions do not become full-width blurred strips. Rofi uses installed Adwaita application icons; Waybar and notification text use the existing installed JetBrainsMono Nerd Font. No font or package installation is required.
 
-Wallpaper startup now uses mpvpaper with videos from `~/Video/Wallpapers`, muted and shuffled, switching every five minutes. The original awww script remains as a manual fallback. The collection contains several images, but its currently displayed image could not be obtained. No image was downloaded or replaced. For a future match, choose one of your own dark blue/violet abstract or night-city wallpapers; avoid bright regions behind the bar. This is a direction, not a new asset dependency.
+Wallpaper startup uses the awww random-image script with `~/Pictures/wallpapers`, switching every ten minutes. The script starts the image daemon when needed. Video wallpaper startup is disabled; source videos and their extracted PNG stills are preserved.
 
 If editing live files normally, **apply this design before capturing**, otherwise capture would overwrite the repository redesign with the old live settings. Then:
 

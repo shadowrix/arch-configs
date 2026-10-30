@@ -12,11 +12,13 @@ FILES = (
     'home/.config/mako/config',
     'home/.config/ghostty/config.ghostty',
     'home/.config/rofi/config.rasi',
+    'waybar/scripts/spotify.py',
     'waybar/style.css',
     'waybar/config.jsonc',
     'hypr/hyprlock.conf',
     'hypr/hyprland.lua',
 )
+SPOTIFY_FILES = ('waybar/scripts/spotify.py', 'waybar/style.css', 'waybar/config.jsonc')
 
 
 def safe_path(base, relative):
@@ -32,12 +34,16 @@ def safe_path(base, relative):
     return path
 
 
-def run(root, home, apply=False, restore=None):
+def run(root, home, apply=False, restore=None, files=FILES):
     mapping = dict(line.split('\t') for line in (root / 'files.tsv').read_text().splitlines())
-    targets = {stored: mapping[stored] for stored in FILES}
+    targets = {stored: mapping[stored] for stored in files}
     if restore:
         backup = Path(restore).resolve()
         originals = json.loads((backup / 'originals.json').read_text())
+        # Older full-theme backups predate the Spotify helper; retain their restore path.
+        helper = mapping.get('waybar/scripts/spotify.py')
+        if files == FILES and set(originals) == set(targets.values()) - {helper}:
+            targets = {stored: rel for stored, rel in targets.items() if rel != helper}
         if set(originals) != set(targets.values()) or any(type(v) is not bool for v in originals.values()):
             raise ValueError('Backup does not match this theme manifest')
         # Check every path before changing anything.
@@ -84,11 +90,13 @@ def run(root, home, apply=False, restore=None):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--spotify', action='store_true', help='apply/restore only the Spotify helper and Waybar theme/config')
     group = parser.add_mutually_exclusive_group()
     group.add_argument('--apply', action='store_true')
     group.add_argument('--restore', type=Path, metavar='BACKUP')
     args = parser.parse_args()
     try:
-        run(Path(__file__).resolve().parent.parent, Path.home(), args.apply, args.restore)
+        run(Path(__file__).resolve().parent.parent, Path.home(), args.apply, args.restore,
+            SPOTIFY_FILES if args.spotify else FILES)
     except (OSError, ValueError, KeyError) as exc:
         parser.exit(1, f'{exc}\n')

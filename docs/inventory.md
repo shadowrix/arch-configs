@@ -21,7 +21,7 @@ Chezmoi is absent from PATH. No chezmoi configuration or alternate repository wa
 | Terminals | Ghostty Catppuccin Mocha, green block cursor, JetBrainsMono Nerd Font, size 14. Kitty installed but its config directory contains no files. Zellij custom bindings/default locked mode. |
 | Editors | VS Code and Cursor settings, keybindings and installed extension IDs; Ayu Mirage Bordered, Material Icon Theme, language formatters, terminal profiles and editing preferences. No user snippet files found. Vim/Neovim use system clipboard. |
 | Appearance | GTK2/3/4 Adwaita-dark and Adwaita icons, Xft settings, xsettingsd, nwg-look export preferences and gsettings export. Hyprland independently requests Bibata-Modern-Ice at size 30. |
-| Integration | Browser/Claude URI associations, Hiddify/Claude desktop entries, Mattermost and Remmina autostart entries. |
+| Integration | Browser/Claude URI associations, Claude desktop entry, Mattermost and Remmina autostart entries. |
 | Development | Global Git ignore for local Claude settings. Global Git config has identity and Git LFS filters; identity excluded. Git LFS restore instructions retained. |
 | SSH | `.ssh` contains private/public key files, agent directory and known-host records. No SSH client `config` file found. Only directory metadata inspected; no key contents copied. |
 
@@ -41,12 +41,12 @@ Installed application evidence comes from pacman and file references. The sessio
 
 - Hyprland `0.56.2-4`, Ghostty `1.3.1-2`, Waybar `0.15.0-3` were installed. The Lua config uses the `hl` API; verify support before restoring with another version. The short `.conf` stub coexists with Lua; both are preserved and no assumption was made about which entry point a particular build loads.
 - Monitor `eDP-1`, `1920x1200@165`, scale `1.07`; keyboard layouts `us,ru`, Alt+Shift switch; touchpad factor `0.2`; example mouse rule `epic-mouse-v1`. Adjust for new hardware.
-- Video wallpaper path is `~/Video/Wallpapers`; startup requires mpvpaper and rotates every five minutes. The retained image fallback uses `~/Pictures/desctop_backgrounds` and awww. Screenshots require `~/Pictures/screenshots`. The screenshot binding invokes `date` twice, so crossing a second boundary can make its clipboard step use a different filename. Preserved as requested.
+- Wallpaper startup uses `~/Pictures/wallpapers` and awww, choosing a random image every ten minutes. Video wallpaper startup is disabled; the videos in `~/Video/Wallpapers` are retained. Screenshots require `~/Pictures/screenshots`. The screenshot binding invokes `date` twice, so crossing a second boundary can make its clipboard step use a different filename. Preserved as requested.
 - Both stored Waybar VPN scripts now reference connection name `VPN-W`. The live scripts and NetworkManager profile could not be updated from the restricted environment. Rename the live profile and update both live scripts together before capturing again; otherwise capture will restore the old name in the repository. Recreate the connection and its credentials privately on another machine.
 - Waybar clock actions have duplicate `on-scroll-up`/`on-scroll-down` keys; parser behavior may select the last value. Preserved unchanged.
-- Rofi theme path, GTK2 include and Hiddify/Claude desktop entries contain `/home/shadowrix`. Adjust before restoring under another username. GTK2 includes `.gtkrc-2.0.mine`, which is absent; create only if needed.
+- Rofi theme path, GTK2 include and Claude desktop entry contain `/home/shadowrix`. Adjust before restoring under another username. GTK2 includes `.gtkrc-2.0.mine`, which is absent; create only if needed.
 - Ghostty's source file is named `config.ghostty`; preserved exactly. Actual automatic loading was not verified. Do not silently rename it and assume equivalent behavior.
-- Starship exists in `/usr/local/bin`, outside the package list. NVM is referenced in Bash startup and needs separate setup. Hiddify AppImage and Claude installation paths require separate installation. Montserrat is referenced by Rofi; its installed font availability was not verified. GTK fonts specify Adwaita Sans.
+- Starship exists in `/usr/local/bin`, outside the package list. NVM is referenced in Bash startup and needs separate setup. The Claude installation path requires separate installation. Montserrat is referenced by Rofi; its installed font availability was not verified. GTK fonts specify Adwaita Sans.
 - Package snapshot includes NVIDIA drivers, Intel microcode, kernel, bootloader and display manager. Review for other hardware. Foreign packages were explicitly installed; their availability in the AUR was not verified.
 - Theme attribution comments retained; confirm upstream license terms before redistributing third-party theme text publicly.
 
@@ -95,7 +95,6 @@ Repository paths on the left, paths relative to HOME on the right. This is also 
 | `home/.config/autostart/remmina-applet.desktop` | `~/.config/autostart/remmina-applet.desktop` |
 | `home/.local/share/rofi/themes/spotlight.rasi` | `~/.local/share/rofi/themes/spotlight.rasi` |
 | `home/.local/share/rofi/themes/spotlight-dark.rasi` | `~/.local/share/rofi/themes/spotlight-dark.rasi` |
-| `home/.local/share/applications/hiddify.desktop` | `~/.local/share/applications/hiddify.desktop` |
 | `home/.local/share/applications/claude-code-url-handler.desktop` | `~/.local/share/applications/claude-code-url-handler.desktop` |
 | `home/.config/Code/User/settings.json` | `~/.config/Code/User/settings.json` |
 | `home/.config/Code/User/keybindings.json` | `~/.config/Code/User/keybindings.json` |

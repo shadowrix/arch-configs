@@ -1,7 +1,7 @@
 """Exercise apply and restore against a temporary home, never the desktop."""
 from pathlib import Path
 from tempfile import TemporaryDirectory
-from theme import FILES, run
+from theme import FILES, SPOTIFY_FILES, run
 
 with TemporaryDirectory() as tmp:
     root, home = Path(tmp) / 'repo', Path(tmp) / 'home'
@@ -37,3 +37,35 @@ with TemporaryDirectory() as tmp:
     else:
         raise AssertionError('symlink accepted')
 print('Theme preview/apply/restore checks passed')
+
+with TemporaryDirectory() as tmp:
+    root, home = Path(tmp) / 'repo', Path(tmp) / 'home'
+    root.mkdir()
+    home.mkdir()
+    (root / 'files.tsv').write_text(''.join(f'{s}\t.config/{s}\n' for s in SPOTIFY_FILES))
+    for stored in SPOTIFY_FILES:
+        src = root / stored
+        src.parent.mkdir(parents=True, exist_ok=True)
+        src.write_text('spotify')
+    run(root, home, apply=True, files=SPOTIFY_FILES)
+    assert all((home / '.config' / s).read_text() == 'spotify' for s in SPOTIFY_FILES)
+    backup = next((root / 'backups').iterdir())
+    run(root, home, restore=backup, files=SPOTIFY_FILES)
+    assert all(not (home / '.config' / s).exists() for s in SPOTIFY_FILES)
+print('Spotify-only apply/restore checks passed')
+
+# Backups from before Spotify was added must still restore successfully.
+with TemporaryDirectory() as tmp:
+    root, home = Path(tmp) / 'repo', Path(tmp) / 'home'
+    root.mkdir()
+    home.mkdir()
+    legacy = tuple(s for s in FILES if s != 'waybar/scripts/spotify.py')
+    (root / 'files.tsv').write_text(''.join(f'{s}\t.config/{s}\n' for s in FILES))
+    for stored in FILES:
+        src = root / stored
+        src.parent.mkdir(parents=True, exist_ok=True)
+        src.write_text('theme')
+    run(root, home, apply=True, files=legacy)
+    run(root, home, restore=next((root / 'backups').iterdir()))
+    assert all(not (home / '.config' / s).exists() for s in FILES)
+print('Legacy theme backup restore checks passed')

@@ -2,6 +2,12 @@
 
 Tokyo Night, frosted glass and restrained blue/violet accents for this Arch Linux / Hyprland setup. See [Tokyo Glass Dev](docs/tokyo-glass-dev.md) for the exact apply, reload, validation and rollback workflow.
 
+The [Spotify music island](docs/spotify-waybar.md) adds independent playback controls
+and an event-driven Unicode marquee to Waybar, with a separate backed-up apply option.
+
+Hover the clock for the native [4×3 year calendar](docs/waybar-calendar.md), with
+right-click month/year switching, scroll navigation and middle-click date reset.
+
 Reviewed configuration snapshots for this Arch Linux / Hyprland setup. Live files remain ordinary files: edit them normally, capture reviewed changes here, then use Git to version them. No symlinks or automatic apply hooks are installed.
 
 ## Layout
@@ -23,7 +29,7 @@ Existing desktop functionality is preserved; the visual settings now implement T
 
 ## Management choice and Git prerequisite
 
-This repository uses explicit file copies mapped by `files.tsv`, not symlinks or chezmoi. No automatic apply hook is installed. The theme helper uses that same mapping and changes only the eight themed files.
+This repository uses explicit file copies mapped by `files.tsv`, not symlinks or chezmoi. No automatic apply hook is installed. The theme helper uses that same mapping and changes only the nine themed files, including the Spotify helper. `--spotify` limits it to the three Waybar player files.
 
 Git metadata is now accessible: the redesign started from clean branch `main` at `61137f0` (`Init`). No remote was configured during this inspection. Existing history is preserved. Before syncing, inspect `git remote -v`; if it remains empty, connect your intended existing GitHub repository with `git remote add origin <YOUR_EXISTING_REPOSITORY_URL>`. No commit, remote change or push was made by the redesign.
 
@@ -31,7 +37,7 @@ Chezmoi is not installed and has not been introduced. This is not a chezmoi sour
 
 ## Dependencies and packages
 
-Runtime dependencies include Hyprland, Waybar, Ghostty, Rofi, mpvpaper, hypridle, hyprlock, hyprpolkitagent, PipeWire/WirePlumber, brightnessctl, playerctl, grim, slurp, wl-clipboard, NetworkManager, Blueman, pavucontrol and inotify-tools. The desktop launches Nemo, Chrome, Spotify, Telegram, Mattermost, AmneziaVPN and a manually supplied Hiddify AppImage. Shell dependencies: Bash, Starship and NVM. Fonts/themes: JetBrainsMono Nerd Font, Montserrat (availability needs checking), Adwaita-dark, Adwaita icons and Bibata-Modern-Ice. Python 3 runs the capture helper.
+Runtime dependencies include Hyprland, Waybar, Ghostty, Rofi, awww, hypridle, hyprlock, hyprpolkitagent, PipeWire/WirePlumber, brightnessctl, playerctl, grim, slurp, wl-clipboard, NetworkManager, Blueman, pavucontrol and inotify-tools. The desktop launches Nemo, Chrome, Spotify, Telegram, Mattermost and AmneziaVPN. Shell dependencies: Bash, Starship and NVM. Fonts/themes: JetBrainsMono Nerd Font, Montserrat (availability needs checking), Adwaita-dark, Adwaita icons and Bibata-Modern-Ice. Python 3 runs the capture helper.
 
 The package lists contain **explicit installations only**, not dependency closure. Review them on new hardware: kernel, NVIDIA, Intel microcode, bootloader, display manager and network choices are machine-specific. The lists are a snapshot, not pinned package versions or a system installer.
 
@@ -59,7 +65,7 @@ sudo pacman -S --needed - < packages/official.txt
 
 Foreign packages are listed separately in `packages/foreign.txt`; inspect their current PKGBUILDs and install them with your chosen AUR workflow. If you already use yay, the corresponding command is `yay -S --needed - < packages/foreign.txt`. Foreign does not necessarily mean AUR: some packages may require another source. These commands were not run.
 
-Restore Starship (`/usr/local/bin/starship` on the original host), NVM/desired Node versions, Hiddify AppImage and Claude Code separately from their trusted installers. These binaries, runtime installations and credentials are not backed up. Recreate VPN connections and secrets privately. Configure Git identity separately with `git config --global user.name` and `git config --global user.email`; run `git lfs install` if using Git LFS.
+Restore Starship (`/usr/local/bin/starship` on the original host), NVM/desired Node versions and Claude Code separately from their trusted installers. These binaries, runtime installations and credentials are not backed up. Recreate VPN connections and secrets privately. Configure Git identity separately with `git config --global user.name` and `git config --global user.email`; run `git lfs install` if using Git LFS.
 
 Before copying, inspect `files.tsv`, review each configuration and the machine settings in the inventory. For another username, adjust the absolute paths in the stored Rofi, GTK2 and desktop-entry files. Check any existing target and its parent directories for symlinks (for example, `namei -l ~/.config/hypr/hyprland.lua`). Resolve conflicts manually first. The following Bash loop is intended for a fresh home after that review. It backs up every existing destination outside the repository before prompting for replacements; it does not remove unrelated files:
 
@@ -80,11 +86,11 @@ while IFS=$'\t' read -r stored live; do
     mkdir -p "$HOME/$(dirname "$live")"
     cp -i --preserve=mode -- "$stored" "$HOME/$live"
 done < files.tsv
-mkdir -p ~/Pictures/screenshots ~/Pictures/desctop_backgrounds
+mkdir -p ~/Pictures/screenshots ~/Pictures/wallpapers
 )
 ```
 
-Supply your MP4 wallpapers privately in `~/Video/Wallpapers`. Hyprland starts mpvpaper with muted, shuffled videos, looping each video and switching every five minutes (`--slideshow 300` in `hypr/hyprland.lua`). The older image-wallpaper script is retained as a manual fallback. Review Lua/Hyprland compatibility before starting the desktop; the original installed version was `0.56.2-4`. No login-session, system-service, bootloader, driver or system-wide configuration is restored by this file backup. Enable services such as networking, Bluetooth or your display manager deliberately for the new system.
+Supply wallpaper images privately in `~/Pictures/wallpapers`. Hyprland starts `hypr/random-wallpaper.sh`, which starts awww when needed and picks a random image every ten minutes. Video wallpapers are disabled; the source videos in `~/Video/Wallpapers` are retained. Review Lua/Hyprland compatibility before starting the desktop; the original installed version was `0.56.2-4`. No login-session, system-service, bootloader, driver or system-wide configuration is restored by this file backup. Enable services such as networking, Bluetooth or your display manager deliberately for the new system.
 
 Optionally restore editor extensions after installing the editors:
 

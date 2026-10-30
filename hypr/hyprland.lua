@@ -32,12 +32,9 @@ local terminal    = "ghostty"
 local fileManager = "nemo"
 local music       = "spotify"
 local browser     = "google-chrome-stable"
---local browser     = "google-chrome-stable --proxy-server=127.0.0.1:12334" -- browser with hiddify proxy
---local browser_i   = "google-chrome-stable --incognito --proxy-server=127.0.0.1:12334"
 local browser_i   = "google-chrome-stable --incognito"
 local launcher    = "rofi -show drun -show-icons"
 local runner      = "rofi -show run"
-local hiddify     = "~/apps/Hiddify-Linux-x64-AppImage.AppImage"
 local amnezia     = "AmneziaVPN"
 local telegram    = "Telegram"
 local mattermost  = "mattermost-desktop"
@@ -53,7 +50,7 @@ local lock_screen = "hyprlock"
 -- Or execute your favorite apps at launch like this:
 --
 hl.on("hyprland.start", function ()  
-  hl.exec_cmd('mpvpaper --slideshow 300 -o "no-audio shuffle hwdec=auto panscan=1" ALL "' .. os.getenv("HOME") .. '/Video/Wallpapers/"')
+  hl.exec_cmd('bash "$HOME/.config/hypr/random-wallpaper.sh"')
 
   hl.exec_cmd("waybar")
   hl.exec_cmd("systemctl --user start hyprpolkitagent")
@@ -266,7 +263,6 @@ hl.bind(mainMod .. " + M", hl.dsp.exec_cmd(music))
 hl.bind(secondMod .. " + M", hl.dsp.exec_cmd(mattermost))
 hl.bind(mainMod .. " + Space", hl.dsp.exec_cmd(launcher))
 hl.bind(secondMod .. " + Space", hl.dsp.exec_cmd(runner))
-hl.bind(mainMod .. " + H", hl.dsp.exec_cmd(hiddify))
 hl.bind(mainMod .. " + A", hl.dsp.exec_cmd(amnezia))
 hl.bind(secondMod .. " + T", hl.dsp.exec_cmd(telegram))
 hl.bind(secondMod .. " + L", hl.dsp.exec_cmd(lock_screen))

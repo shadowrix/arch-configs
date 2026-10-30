@@ -6,6 +6,7 @@ hypr/hyprlock.conf	.config/hypr/hyprlock.conf
 hypr/random-wallpaper.sh	.config/hypr/random-wallpaper.sh
 waybar/auto-reload.sh	.config/waybar/auto-reload.sh
 waybar/config.jsonc	.config/waybar/config.jsonc
+waybar/scripts/spotify.py	.config/waybar/scripts/spotify.py
 waybar/scripts/vpn-status.sh	.config/waybar/scripts/vpn-status.sh
 waybar/scripts/vpn-toggle.sh	.config/waybar/scripts/vpn-toggle.sh
 waybar/style.css	.config/waybar/style.css
@@ -27,7 +28,6 @@ home/.config/autostart/mattermost-desktop.desktop	.config/autostart/mattermost-d
 home/.config/autostart/remmina-applet.desktop	.config/autostart/remmina-applet.desktop
 home/.local/share/rofi/themes/spotlight.rasi	.local/share/rofi/themes/spotlight.rasi
 home/.local/share/rofi/themes/spotlight-dark.rasi	.local/share/rofi/themes/spotlight-dark.rasi
-home/.local/share/applications/hiddify.desktop	.local/share/applications/hiddify.desktop
 home/.local/share/applications/claude-code-url-handler.desktop	.local/share/applications/claude-code-url-handler.desktop
 home/.config/Code/User/settings.json	.config/Code/User/settings.json
 home/.config/Code/User/keybindings.json	.config/Code/User/keybindings.json
